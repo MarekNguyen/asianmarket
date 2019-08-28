@@ -14,6 +14,7 @@ return [
     */
 
     'order' => 'Orders',
+    'client' => 'Clients',
     
 
 ];
