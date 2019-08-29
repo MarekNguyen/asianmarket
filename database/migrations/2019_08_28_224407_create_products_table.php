@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->bigInteger('order_id')->unsigned();
-            $table->integer('quantity')->unsigned();
+            $table->integer('quantity')->unsigned()->default(1);
             $table->timestamps();
         });
         Schema::table('products', function($table) {

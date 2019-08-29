@@ -81,9 +81,9 @@ class PitayaOrderController extends Controller
         $customer_id = $request->customer_id;
         $price = $request->price;
         $total = $request->total;
-        $order = new Order(['customer_id'=>$customer_id,'price'=>$price,'total'=>$total,'name'=>$counterForName]);
-        $order->save();
-        return redirect()->route('pitaya.index');
+        $order = Order::initialize($customer_id,$price,$total,$counterForName);
+
+        return redirect()->route('pitaya.show',$order->id);
     }
     /**
      * Store a newly created resource in storage.
@@ -139,6 +139,8 @@ class PitayaOrderController extends Controller
     public function show($id)
     {
         //
+        $order = Order::findOrFail($id);
+        return view('pitaya.show',compact('order'));
     }
 
     /**

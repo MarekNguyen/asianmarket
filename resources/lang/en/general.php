@@ -13,11 +13,11 @@ return [
     |
     */
 
-    'order' => 'Order',
-    'orders' => 'Orders',
-    'number' => 'number',
-    'clients' => 'Clients',
-    'client' => 'Client',
+    'quantity' => 'Quantity',
+    'note' => 'Note',
+    'optional' => 'Optional',
+    'save' => 'Save',
+    
     
 
 ];
