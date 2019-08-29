@@ -22,16 +22,21 @@
             </form>
         </div>
         <div style="float: left">
-                @for ($i = 0; $i < $order->total; $i++)
+            
+                @foreach($order->products as $key => $product)
+                @for ($i = 0; $i < $product->quantity; $i++)
                     <div style="page-break-after: right; width: 276px; text-align: center;">
                         <div style="font-size: 1.5rem; font-family: arial">
-                            <div><strong><em>Zamowienie nr: {{ $order->name }}</em></strong></div>
-                            <div><strong>{{ strtoupper($order->customer->name) }}</strong></div>
-                            <div><strong>{{ $order->created_at->toDateString() }}</strong></div>
-                            <div style="font-size: 3.5rem"><strong>{{ $i + 1 }}</strong></div>
+                            <div><em>Zamowienie nr:</em> <strong>{{ $order->name }}</strong></div>
+                            <div>Mặt Hàng Số:<strong> {{ $key + 1 }}</strong></div> 
+                            <div>Sản Phẩm: <strong>{{ $i + 1 }}/{{ $product->quantity }}</strong></div>
+                            <div><strong>{{ $product->name }}</strong></div>
+                            <div><em>{{ strtoupper($order->customer->name) }}</em></div>
+                            <div><em>{{ $order->created_at->toDateString() }}</em></div>
                         </div>
                     </div> 
-                @endfor      
+                    @endfor
+                @endforeach      
         </div>
     </body>
 </html>

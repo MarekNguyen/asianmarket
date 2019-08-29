@@ -17,8 +17,8 @@
                         @foreach ($order->products as $key => $product)
                             <tr id="{{ $product->id }}">
                                 <td>{{ $key + 1 }}</td>
-                                <td class="col-lg-4 quantity"><input type="text" name="quantity" class="form-control text-center" value="{{ $product->quantity }}" autocomplete="off"></td>
-                                <td class="col-lg-6 note"><input type="text" name="name" class="form-control text-center" placeholder="*{{ __('general.optional') }}*"></td>
+                                <td><input type="text" name="quantity" class="form-control text-center quantity" value="{{ $product->quantity }}" autocomplete="off"></td>
+                                <td><input type="text" name="name" class="form-control text-center note" placeholder="*{{ __('general.optional') }}*" value="{{ $product->name }}"></td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -29,6 +29,31 @@
     </div>
 </div>
 <script>
-    
+    $(document).ready(function(){
+        
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });    
+
+        $('#btn').click(function(e){
+            e.preventDefault();
+            let data = [];
+            $('.table > tbody > tr').each(function(){
+                let value = {'productId': $(this)[0].id,'quantity': $(this).find('.quantity').val(),'name' : $(this).find('.note').val()};
+                data.push(value);
+            });
+            $.ajax({
+                url: '{{ route('pitaya.update',$order->id) }}',
+                type: 'PUT',
+                data: { data },
+                success: function(e){
+                    window.location.replace("{{route('pitaya.index')}}");
+                }
+            });
+            
+        })
+    });   
 </script>
 @endsection

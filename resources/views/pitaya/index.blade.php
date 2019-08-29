@@ -18,9 +18,9 @@
           <tbody>
             @foreach ($orders as $key => $order)
               <tr>
-                <td>{{$order->name}}</td>
+                <td><a href="{{ route('pitaya.show',$order->id) }}" class="btn btn-primary">{{$order->name}}</a></td>
                 <td>{{$order->customer->name}}</td>
-                <td>{{$order->total}} Szt</td>
+                <td><p>{{$order->total}} mặt hàng</p> <p><em>{{ $order->products->sum('quantity') }} sản phẩm</em></p></td>
                 <td>{{$order->price}} zł</td>
                 <td
                   @if ($order->status == 0)

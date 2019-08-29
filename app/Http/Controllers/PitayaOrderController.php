@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Product;
 use App\Customer;
 use Carbon\Carbon;
 
@@ -164,6 +165,17 @@ class PitayaOrderController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $order = Order::findOrFail($id);
+        $products = $request->data;
+        foreach ($products as $product) {
+            $prod = Product::findOrFail($product['productId']);
+            $prod->name = $product['name'];
+            $prod->quantity = $product['quantity'];
+            $prod->update();
+        }
+        if ($request->ajax()) {
+            return response()->json(array('response' => $product['productId']));
+        }
     }
 
     /**
