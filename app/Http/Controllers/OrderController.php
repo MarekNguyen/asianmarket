@@ -9,7 +9,7 @@ use App\Product;
 use App\Customer;
 use Carbon\Carbon;
 
-class PitayaOrderController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +21,7 @@ class PitayaOrderController extends Controller
         //
         $today = Carbon::today()->toDateString();
         $orders = Order::where('created_at','>',Carbon::today())->get();
-        return view('pitaya.index',compact('orders','today'));
+        return view('order.index',compact('orders','today'));
     }
 
     /**
@@ -33,7 +33,7 @@ class PitayaOrderController extends Controller
     {
         //
         $customers = Customer::all();
-        return view('pitaya.order',compact('customers'));
+        return view('order.order',compact('customers'));
     }
 
     /**
@@ -42,7 +42,7 @@ class PitayaOrderController extends Controller
 
      public function createNewCustomer(){
          $customers = Customer::all();
-         return view('pitaya.customer',compact('customers'));
+         return view('order.customer',compact('customers'));
      }
     /**
      * Show the form for creating a new resource.
@@ -53,7 +53,7 @@ class PitayaOrderController extends Controller
     {
         //
         
-        return view('pitaya.report');
+        return view('order.report');
     }
     /**
      * Show the form for creating a new resource.
@@ -65,7 +65,7 @@ class PitayaOrderController extends Controller
         $start = $request->start;
         $end = $request->end;   
         $orders = Order::whereBetween('created_at',[$start.' 00:00:00', $end.' 23:59:59'])->get();
-        return view('pitaya.reportfinal',compact('orders'));
+        return view('order.reportfinal',compact('orders'));
     }
 
     /**
@@ -84,7 +84,7 @@ class PitayaOrderController extends Controller
         $total = $request->total;
         $order = Order::initialize($customer_id,$price,$total,$counterForName);
 
-        return redirect()->route('pitaya.show',$order->id);
+        return redirect()->route('order.show',$order->id);
     }
     /**
      * Store a newly created resource in storage.
@@ -98,7 +98,7 @@ class PitayaOrderController extends Controller
         $name = $request->name;
         $customer = new Customer(['name'=> $name]);
         $customer->save();
-        return redirect()->route('pitaya.customercreate');
+        return redirect()->route('customercreate');
     }
 
     /**
@@ -112,7 +112,7 @@ class PitayaOrderController extends Controller
         //
         $order_id = $request->order_id;
         $order = Order::findOrFail($order_id);
-        return view('pitaya.prepare',compact('order'));
+        return view('order.prepare',compact('order'));
         
     }
     /**
@@ -128,7 +128,7 @@ class PitayaOrderController extends Controller
         $order = Order::findOrFail($order_id);
         $order->status = 1 ;
         $order->update();
-        return redirect()->route('pitaya.index');
+        return redirect()->route('order.index');
         
     }
     /**
@@ -141,7 +141,7 @@ class PitayaOrderController extends Controller
     {
         //
         $order = Order::findOrFail($id);
-        return view('pitaya.show',compact('order'));
+        return view('order.show',compact('order'));
     }
 
     /**

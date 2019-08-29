@@ -24,7 +24,7 @@
                       </table>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 mx-auto">
-            <form action="{{ route('pitaya.customerstore') }}" method="POST">
+            <form action="{{ route('customerstore') }}" method="POST">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <h3>Nazwa:</h3>

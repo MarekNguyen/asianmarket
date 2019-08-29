@@ -45,11 +45,11 @@
                 data.push(value);
             });
             $.ajax({
-                url: '{{ route('pitaya.update',$order->id) }}',
+                url: '{{ route('order.update',$order->id) }}',
                 type: 'PUT',
                 data: { data },
                 success: function(e){
-                    window.location.replace("{{route('pitaya.index')}}");
+                    window.location.replace("{{route('order.index')}}");
                 }
             });
             

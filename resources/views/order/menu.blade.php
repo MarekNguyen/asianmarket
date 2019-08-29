@@ -3,13 +3,13 @@
       <ul class="nav flex-column">
         
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('pitaya.create')}}">
+          <a class="nav-link" href="{{ route('order.create')}}">
             <span data-feather="file"></span>
             Zamowienie
           </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('pitaya.customercreate') }}">
+            <a class="nav-link" href="{{ route('customercreate') }}">
               <span data-feather="file"></span>
               Klient
             </a>
@@ -25,7 +25,7 @@
       <ul class="nav flex-column mb-2">
         
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('pitaya.report') }}">
+          <a class="nav-link" href="{{ route('report') }}">
             
             Suma
           </a>

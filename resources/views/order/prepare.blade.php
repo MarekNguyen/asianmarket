@@ -15,7 +15,7 @@
         </style>
         <div class="hidden-print">
             <button onclick="window.print();">{{ __('Print') }}</button>
-            <form action="{{ route('pitaya.confirm') }}" method="POST" onsubmit="return confirm('Bạn đã hoàn thành đơn hàng này chưa???');" style="display: inline;">
+            <form action="{{ route('confirm') }}" method="POST" onsubmit="return confirm('Bạn đã hoàn thành đơn hàng này chưa???');" style="display: inline;">
                 {{ csrf_field() }}
                 <input type="hidden" value="{{ $order->id }}" name="order_id">
                 <button>Panel</button>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="card">
-    <h1 class="card-header bg-primary text-light">PITAYA KUCHNIA - {{ __('menu.order') }}</h1>
+    <h1 class="card-header bg-primary text-light">Company - {{ __('menu.order') }}</h1>
     
     <div class="card-body">
         <table class="table table-striped table-sm table-hover">
@@ -18,7 +18,7 @@
           <tbody>
             @foreach ($orders as $key => $order)
               <tr>
-                <td><a href="{{ route('pitaya.show',$order->id) }}" class="btn btn-primary">{{$order->name}}</a></td>
+                <td><a href="{{ route('order.show',$order->id) }}" class="btn btn-primary">{{$order->name}}</a></td>
                 <td>{{$order->customer->name}}</td>
                 <td><p>{{$order->total}} mặt hàng</p> <p><em>{{ $order->products->sum('quantity') }} sản phẩm</em></p></td>
                 <td>{{$order->price}} zł</td>
@@ -30,7 +30,7 @@
                   @endif
                 >{{$order->status == 0 ? 'CHƯA LÀM' : 'ĐÃ LÀM'}}</td>
                 <td>
-                  <form action="{{ route('pitaya.prepare') }}" method="POST">
+                  <form action="{{ route('prepare') }}" method="POST">
                     {{ csrf_field() }}
                     <input type="hidden" value="{{ $order->id }}" name="order_id">
                     <button class="btn btn-primary"><i class="fas fa-print fa-2x"></i></button>

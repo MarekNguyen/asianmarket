@@ -27,7 +27,7 @@
                             @endif
                           >{{$order->status == 0 ? 'CHƯA LÀM' : 'ĐÃ LÀM'}}</td>
                           <td>
-                            <form action="{{ route('pitaya.prepare') }}" method="POST">
+                            <form action="{{ route('prepare') }}" method="POST">
                               {{ csrf_field() }}
                               <input type="hidden" value="{{ $order->id }}" name="order_id">
                               <button class="btn btn-primary"><i class="fas fa-print fa-2x"></i></button>

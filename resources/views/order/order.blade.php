@@ -4,7 +4,7 @@
     <hr>
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6 mx-auto">
-            <form action="{{ route('pitaya.store') }}" method="POST">
+            <form action="{{ route('order.store') }}" method="POST">
                 {{ csrf_field() }}
                 <h3>Klient:</h3>
                 <select name="customer_id" class="form-control" required>

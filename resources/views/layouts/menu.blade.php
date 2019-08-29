@@ -4,10 +4,10 @@
     </a>
 
     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="{{ route('pitaya.create') }}">
+        <a class="dropdown-item" href="{{ route('order.create') }}">
             {{ __('menu.order') }}
         </a>
-        <a class="dropdown-item" href="{{ route('pitaya.customercreate') }}">
+        <a class="dropdown-item" href="{{ route('customercreate') }}">
             {{ __('menu.client') }}
         </a>
     </div>
