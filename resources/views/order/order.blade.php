@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<div class="container">
     <h1>Utwórz nowe zamówienie</h1>
     <hr>
     <div class="row">
@@ -22,4 +23,5 @@
             </form>
         </div>
     </div>
+</div>
 @endsection

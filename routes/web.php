@@ -25,5 +25,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/prepare', 'OrderController@prepareList')->name('prepare');
     Route::post('/confirm', 'OrderController@confirmList')->name('confirm');
     Route::resource('/order', 'OrderController');
+
+    // Retail App
+    Route::get('/retail','RetailController@index')->name('retail.index');
 });
 

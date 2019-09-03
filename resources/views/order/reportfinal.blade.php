@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<div class="container">
     <div>
             <table class="table table-striped table-sm table-hover">
                     <thead>
@@ -38,4 +39,5 @@
                     </tbody>
                   </table>
     </div>
+  </div>
 @endsection

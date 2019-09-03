@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<div class="container">
 <h1>PITAYA.PL REPORT</h1>
 <hr>
 <div>
@@ -145,5 +146,5 @@
         });
     
     </script>
-
+</div>
 @endsection

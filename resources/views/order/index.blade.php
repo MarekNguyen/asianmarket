@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<div class="container">
     <div class="card">
     <h1 class="card-header bg-primary text-light">Company - {{ __('menu.order') }}</h1>
     
@@ -42,4 +43,5 @@
         </table>
       </div>
     </div>
+  </div>
 @endsection
