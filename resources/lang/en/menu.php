@@ -12,7 +12,8 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
+    'wholesale' => 'Wholesale',
+    'retail' => 'Retail',
     'order' => 'Order',
     'orders' => 'Orders',
     'number' => 'number',

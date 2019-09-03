@@ -2,6 +2,7 @@
 @section('content')
     <h1>Utwórz adres klienta</h1>
     <hr>
+    @include('errors')
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6 mx-auto">
                 <table class="table table-striped table-sm table-hover">

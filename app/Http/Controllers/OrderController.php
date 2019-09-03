@@ -8,6 +8,7 @@ use App\Order;
 use App\Product;
 use App\Customer;
 use Carbon\Carbon;
+use App\Http\Requests\CustomerCreateRequest;
 
 class OrderController extends Controller
 {
@@ -92,7 +93,7 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeCustomer(Request $request)
+    public function storeCustomer(CustomerCreateRequest $request)
     {
         //
         $name = $request->name;
