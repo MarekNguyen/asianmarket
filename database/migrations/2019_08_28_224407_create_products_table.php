@@ -16,12 +16,16 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
-            $table->bigInteger('order_id')->unsigned();
+            $table->bigInteger('order_id')->unsigned()->nullable();
+            $table->bigInteger('retail_order_id')->unsigned()->nullable();
+            $table->float('retail_price')->default(0);
+            $table->float('wholesale_price')->default(0);
             $table->integer('quantity')->unsigned()->default(1);
             $table->timestamps();
         });
         Schema::table('products', function($table) {
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->foreign('retail_order_id')->references('id')->on('retail_orders')->onDelete('cascade');
         });
     }
 

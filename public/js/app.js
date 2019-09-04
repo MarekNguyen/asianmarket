@@ -1827,9 +1827,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      menu: {},
+      Order: {}
+    };
   },
   created: function created() {
     this.fetchData();
@@ -37952,9 +37974,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" })
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-8 col-lg-8 col-sm-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c(
+              "h4",
+              { staticClass: "card-header text-center text-light bg-primary" },
+              [_vm._v("Menu")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-4 col-lg-4 col-sm-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c(
+              "h4",
+              { staticClass: "card-header text-center text-light bg-success" },
+              [_vm._v("Zamowienie")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" })
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
