@@ -1,15 +1,13 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
+    <div id="container">
+        <div class="retail-box">
 
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
-            </div>
+        </div>
+         <div class="retail-box">
+
+        </div>
+         <div class="retail-box">
+
         </div>
     </div>
 </template>
@@ -21,3 +19,11 @@
         }
     }
 </script>
+<style scoped>
+    .retail-box {
+        display: inline-block;
+        height: 150px;
+        width: 150px;
+        background-color: #3490dc;
+    }
+</style>
