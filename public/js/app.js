@@ -1858,7 +1858,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     fetchData: function fetchData() {
-      fetch('').then('');
+      fetch('/api/retail').then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        console.log(res);
+      });
     }
   }
 });

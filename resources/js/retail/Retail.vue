@@ -5,7 +5,7 @@
                 <div class="card">
                     <h4 class="card-header text-center text-light bg-primary">Menu</h4>
                     <div class="card-body">
-                        
+
                     </div>
                 </div>
             </div>
@@ -40,7 +40,14 @@
         },
         methods: {
             fetchData(){
-                fetch('').then('');
+                fetch('/api/retail')
+                .then(res=> {
+                    return  res.json();
+                })
+                .then(res=>{
+                    console.log(res);
+                    
+                });
             }
         },
     }
