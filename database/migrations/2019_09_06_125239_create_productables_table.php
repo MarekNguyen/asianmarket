@@ -14,11 +14,10 @@ class CreateProductablesTable extends Migration
     public function up()
     {
         Schema::create('productables', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->bigInteger('product_id');
             $table->bigInteger('productable_id');
             $table->string('productable_type');
-            $table->timestamps();
+            $table->integer('quantity')->default(1);
         });
     }
 
