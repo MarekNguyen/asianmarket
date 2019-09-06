@@ -15,8 +15,10 @@ class RetailApiController extends Controller
     public function index()
     {
         //
-        $retailOrders = RetailOrder::paganate(15);
-        return RetailOrderResource::collection($retailOrders);
+        $products = Product::all();
+        $retailOrders = RetailOrder::paginate(15);
+        // return RetailOrderResource::collection($retailOrders);
+        return RetailOrderResource::collection($products);
     }
 
     /**
@@ -38,6 +40,8 @@ class RetailApiController extends Controller
     public function store(Request $request)
     {
         //
+        $retailOrder = new RetailOrder;
+        
     }
 
     /**
@@ -49,6 +53,8 @@ class RetailApiController extends Controller
     public function show($id)
     {
         //
+        $retailOrder = RetailOrder::findOrFail($id);
+        return new RetailOrderResource($retailOrder);
     }
 
     /**

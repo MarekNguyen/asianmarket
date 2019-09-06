@@ -8,4 +8,9 @@ class RetailOrder extends Model
 {
     //
     protected $fillable = ['price'];
+    
+    public function products()
+    {
+        return $this->morphToMany('App\Product', 'productable');
+    }
 }

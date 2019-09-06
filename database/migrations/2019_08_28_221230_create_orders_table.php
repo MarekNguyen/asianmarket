@@ -17,7 +17,6 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('customer_id')->unsigned();
-            $table->float('total')->unsigned();
             $table->float('price')->nullable();
             $table->boolean('status')->default(0);
             $table->timestamps();

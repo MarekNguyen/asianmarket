@@ -15,20 +15,20 @@ class Order extends Model
     }
     public function products()
     {
-        return $this->hasMany('App\Product', 'order_id', 'id');
+        return $this->morphToMany('App\Product', 'productable');
     }
 
-    public static function initialize($customer_id, $price, $total, $name) {
-        $order = new Order(['customer_id'=>$customer_id,'price'=>$price,'total'=>$total,'name'=>$name]);
-        $order->save();
-        for ($i=0; $i < $total; $i++) { 
-            $newproduct = new Product(['order_id' => $order->id]);
-            $newproduct->save();
-        }  
-        return $order;
-    }
+    // public static function initialize($customer_id, $price, $total, $name) {
+    //     $order = new Order(['customer_id'=>$customer_id,'price'=>$price,'total'=>$total,'name'=>$name]);
+    //     $order->save();
+    //     for ($i=0; $i < $total; $i++) { 
+    //         $newproduct = new Product(['order_id' => $order->id]);
+    //         $newproduct->save();
+    //     }  
+    //     return $order;
+    // }
 
-    public function exempt() {
-        return $this->products()->delete();
-    }
+    // public function exempt() {
+    //     return $this->products()->delete();
+    // }
 }

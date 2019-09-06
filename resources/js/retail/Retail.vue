@@ -5,7 +5,7 @@
                 <div class="card">
                     <h4 class="card-header text-center text-light bg-primary">Menu</h4>
                     <div class="card-body">
-
+                        <button class="btn btn-primary"> fetch data</button>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
         },
         methods: {
             fetchData(){
-                fetch('/api/retail')
+                fetch('/pitaya/public/api/retail')
                 .then(res=> {
                     return  res.json();
                 })

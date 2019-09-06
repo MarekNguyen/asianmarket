@@ -1858,7 +1858,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     fetchData: function fetchData() {
-      fetch('/api/retail').then(function (res) {
+      fetch('/pitaya/public/api/retail').then(function (res) {
         return res.json();
       }).then(function (res) {
         console.log(res);
@@ -37995,7 +37995,11 @@ var staticRenderFns = [
               [_vm._v("Menu")]
             ),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" })
+            _c("div", { staticClass: "card-body" }, [
+              _c("button", { staticClass: "btn btn-primary" }, [
+                _vm._v(" fetch data")
+              ])
+            ])
           ])
         ]),
         _vm._v(" "),

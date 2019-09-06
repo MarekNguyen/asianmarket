@@ -9,13 +9,13 @@ class Product extends Model
     //
     protected $fillable = ['name','order_id','quantity','retail_order_id','retail_price','wholesale_price'];
     
-    public function order()
+    public function orders()
     {
-        return $this->belongsTo('App\Order', 'order_id', 'id');
+        return $this->morphedByMany('App\Order', 'productable');
     }
 
-    public function retailorder()
+    public function retailOrders()
     {   
-        return $this->belongsTo('App\RetailOrder', 'retail_order_id', 'id');
+        return $this->morphedByMany('App\RetailOrder', 'productable');
     }
 }
