@@ -11,6 +11,6 @@ class RetailOrder extends Model
     
     public function products()
     {
-        return $this->morphToMany('App\Product', 'productable');
+        return $this->morphToMany('App\Product', 'productable')->withPivot('quantity');
     }
 }

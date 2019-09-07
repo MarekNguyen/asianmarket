@@ -15,7 +15,7 @@ class Order extends Model
     }
     public function products()
     {
-        return $this->morphToMany('App\Product', 'productable');
+        return $this->morphToMany('App\Product', 'productable')->withPivot('quantity');
     }
 
     // public static function initialize($customer_id, $price, $total, $name) {

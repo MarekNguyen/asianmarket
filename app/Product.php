@@ -11,11 +11,11 @@ class Product extends Model
     
     public function orders()
     {
-        return $this->morphedByMany('App\Order', 'productable');
+        return $this->morphedByMany('App\Order', 'productable')->withPivot('quantity');
     }
 
     public function retailOrders()
     {   
-        return $this->morphedByMany('App\RetailOrder', 'productable');
+        return $this->morphedByMany('App\RetailOrder', 'productable')->withPivot('quantity');
     }
 }
