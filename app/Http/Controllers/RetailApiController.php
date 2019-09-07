@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\RetailOrder;
+use App\Product;
 use App\Http\Resources\RetailOrder as RetailOrderResource;
+use App\Http\Resources\ProductResource;
 use Illuminate\Http\Request;
 
 class RetailApiController extends Controller
@@ -18,7 +20,7 @@ class RetailApiController extends Controller
         $products = Product::all();
         $retailOrders = RetailOrder::paginate(15);
         // return RetailOrderResource::collection($retailOrders);
-        return RetailOrderResource::collection($products);
+        return ProductResource::collection($products);
     }
 
     /**
