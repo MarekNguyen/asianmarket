@@ -6,7 +6,12 @@
                     <h4 class="card-header text-center text-light bg-primary">Menu</h4>
                     <div class="card-body">
                         <div class="row">
-                            <button class="retail-box" v-for="(product, index) in products" :key="index" @click="addProductToOrder(index)">{{ product.id }} {{ product.name }}</button>
+                            <button class="retail-box" v-for="(product, index) in products" :key="index" @click="addProductToOrder(index)">
+                                <center>
+                                    <img :src="product.link" alt="" class="productImg">
+                                    <div>{{ product.id }} {{ product.name }}</div>
+                                </center>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -15,10 +20,11 @@
                 <div class="card">
                     <h4 class="card-header text-center text-light bg-success">Zamowienie</h4>
                     <div class="card-body">
-                        <div class="order-product" v-for="(product, index) in order" :key="index">{{ product.name }} x {{ product.quantity }} = {{ product.quantity * product.retail }} zł</div>
+                        <div class="order-product" v-for="(product, index) in order" :key="index">{{ product.quantity }} x {{ product.name }} <span class="float-right"> {{ product.quantity * product.retail }} zł</span></div>
                         
                     </div>
                     <div class="card-footer">
+                        <button class="btn btn-success" @click="addNewOrder()">Finish</button>
                         <div class="float-right">Tổng Cộng: {{ orderCost }} zł</div>
                     </div>
                 </div>
@@ -33,6 +39,7 @@
     export default {
         data() {
             return {
+                root:'http://localhost/pitaya/public',
                 products:[],
                 menu: {
 
@@ -55,15 +62,19 @@
         methods: {
             addProductToOrder(index){
                 let product = this.products[index]; 
+                
                 if (this.order.length === 0) {
                     this.order.push(product);
                 } else {
                     for (let i = 0; i < this.order.length; i++) {
                         if (this.order[i].id == product.id) {
                             this.order[i].quantity++;
+                            console.log(product.quantity);
+                            
                             break;
                         } else if ( i === this.order.length - 1){
                             this.order.push(product);
+                            console.log(product.quantity);
                             break;
                         }
                         
@@ -82,12 +93,16 @@
                             id: element.id,
                             name: element.name,
                             retail: element.retail_price,
-                            link: element.link,
+                            link: this.root + element.link,
                             quantity: 1
                         };
                         this.products.push(data);
                     });
                 });
+            },
+            addNewOrder(){
+                console.log(this.products);
+                this.order = [];
             }
         },
     }
@@ -106,9 +121,13 @@
         justify-content: center;
         align-content: center;
         flex-direction: column;
-        font-size: 25px;
+        font-size: 10px;
     }
     .order-product {
 
+    }
+    .productImg{
+        height: 100px;
+        width: 100px;
     }
 </style>

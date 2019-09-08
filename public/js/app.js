@@ -1852,9 +1852,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      root: 'http://localhost/pitaya/public',
       products: [],
       menu: {},
       order: []
@@ -1882,9 +1889,11 @@ __webpack_require__.r(__webpack_exports__);
         for (var i = 0; i < this.order.length; i++) {
           if (this.order[i].id == product.id) {
             this.order[i].quantity++;
+            console.log(product.quantity);
             break;
           } else if (i === this.order.length - 1) {
             this.order.push(product);
+            console.log(product.quantity);
             break;
           }
         }
@@ -1901,13 +1910,17 @@ __webpack_require__.r(__webpack_exports__);
             id: element.id,
             name: element.name,
             retail: element.retail_price,
-            link: element.link,
+            link: _this.root + element.link,
             quantity: 1
           };
 
           _this.products.push(data);
         });
       });
+    },
+    addNewOrder: function addNewOrder() {
+      console.log(this.products);
+      this.order = [];
     }
   }
 });
@@ -6409,7 +6422,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.retail-box[data-v-38d96ea1] {\n    /* display: inline-block; */\n    height: 150px;\n    width: 150px;\n    background-color: #3490dc;\n    margin: 2px 2px;\n    color: white;\n    cursor: pointer;\n    text-align: center;\n    display: flex;\n    justify-content: center;\n    align-content: center;\n    flex-direction: column;\n    font-size: 25px;\n}\n.order-product[data-v-38d96ea1] {\n}\n", ""]);
+exports.push([module.i, "\n.retail-box[data-v-38d96ea1] {\n    /* display: inline-block; */\n    height: 150px;\n    width: 150px;\n    background-color: #3490dc;\n    margin: 2px 2px;\n    color: white;\n    cursor: pointer;\n    text-align: center;\n    display: flex;\n    justify-content: center;\n    align-content: center;\n    flex-direction: column;\n    font-size: 10px;\n}\n.order-product[data-v-38d96ea1] {\n}\n.productImg[data-v-38d96ea1]{\n    height: 100px;\n    width: 100px;\n}\n", ""]);
 
 // exports
 
@@ -38098,7 +38111,19 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v(_vm._s(product.id) + " " + _vm._s(product.name))]
+                  [
+                    _c("center", [
+                      _c("img", {
+                        staticClass: "productImg",
+                        attrs: { src: product.link, alt: "" }
+                      }),
+                      _vm._v(" "),
+                      _c("div", [
+                        _vm._v(_vm._s(product.id) + " " + _vm._s(product.name))
+                      ])
+                    ])
+                  ],
+                  1
                 )
               }),
               0
@@ -38121,19 +38146,32 @@ var render = function() {
             _vm._l(_vm.order, function(product, index) {
               return _c("div", { key: index, staticClass: "order-product" }, [
                 _vm._v(
-                  _vm._s(product.name) +
-                    " x " +
-                    _vm._s(product.quantity) +
-                    " = " +
-                    _vm._s(product.quantity * product.retail) +
-                    " zł"
-                )
+                  _vm._s(product.quantity) + " x " + _vm._s(product.name) + " "
+                ),
+                _c("span", { staticClass: "float-right" }, [
+                  _vm._v(
+                    " " + _vm._s(product.quantity * product.retail) + " zł"
+                  )
+                ])
               ])
             }),
             0
           ),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success",
+                on: {
+                  click: function($event) {
+                    return _vm.addNewOrder()
+                  }
+                }
+              },
+              [_vm._v("Finish")]
+            ),
+            _vm._v(" "),
             _c("div", { staticClass: "float-right" }, [
               _vm._v("Tổng Cộng: " + _vm._s(_vm.orderCost) + " zł")
             ])

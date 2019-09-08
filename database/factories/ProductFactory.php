@@ -21,7 +21,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'name' => $faker->name,
         'retail_price' => '17.00',
         'wholesale_price' => '15.00',
-        'link' => '/tmp.png',
+        'link' => '/assets/img/tmp.jpg',
         'created_at' => now(),
         'updated_at' => now()
     ];
